@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Randy&#39;s Blog</title>
+    <link>https://Randy-whiteSugar.github.io/post/</link>
+    <description>Recent content in Posts on Randy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 Aug 2020 01:49:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://Randy-whiteSugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Project</title>
+      <link>https://Randy-whiteSugar.github.io/post/project/</link>
+      <pubDate>Sat, 08 Aug 2020 01:49:10 +0800</pubDate>
+      
+      <guid>https://Randy-whiteSugar.github.io/post/project/</guid>
+      <description> 基于Google Earth的全球疫情故事可视化  项目目标 通过对疫情中的个体故事及其相关背景信息（疫情传播、国家管控政策、重要新闻等）进行三维地理可视化，尽可能生动地描述与疫情斗争的真实案例，真实客观地再现疫情中的人民生活、反映疫情中的个体命运与人类命运的关系。
+ 项目预期成果  基于Google Earth的全球疫情故事可视化交互系统，约含20个疫情故事主题，支持用户便捷浏览和故事自定义 基于可视化交互系统的疫情故事视频 &amp;amp; 系统演示视频   方法 1. 数据收集：
+ 通过WHO、各国卫生行政机构等信息源收集全球疫情传播的时间序列数据 通过微博、微信公众号、新闻报道等信息源收集疫情中的个体故事、国家管控政策、重要新闻等，并定位相应地理坐标、收集各种相关资源（图片、视频、报道等）  2. 技术调研：
+ Google Earth基础操作（定位、导入数据、视频制作等）学习 Google Earth二次开发（web端）相关技术（Google Earth web API）学习 基于JS的统计图表（热力图、折线图等）绘制学习  3. 系统开发和视频制作：
+ 疫情故事可视化形式设计 基于Google Earth的可视化交互系统设计与开发 基于Google Earth的疫情故事视频制作   项目团队  数据收集、可视化设计：何姿谊、唐震怡 技术调研、系统开发：桑宇辰、陈雨航   当前工作  基于Google Earth可视化交互系统开发 疫情主题故事整理与进一步可视化设计  </description>
+    </item>
+    
+    <item>
+      <title>MyResume</title>
+      <link>https://Randy-whiteSugar.github.io/post/myresume/</link>
+      <pubDate>Fri, 07 Aug 2020 01:56:00 +0800</pubDate>
+      
+      <guid>https://Randy-whiteSugar.github.io/post/myresume/</guid>
+      <description> 桑宇辰 性别：男
+电子邮件: syc_im@pku.edu.cn
+github: https://github.com/syc961126
+ 教育经历  本科 华中科技大学  2015.9-2019.6 信息管理与信息系统(医学信息)
+2016.9-2018.6 计算机科学与技术(第二学位)
+ 硕土 北京大学  2015.9-2019.6 情报学
+ 过往项目经历  基于电子病历的糖尿病患病概率预测 2017.3-2018.6 大创项目&amp;amp;国家级创新竞赛  作为负责人申请并主持大创项目，主要负责项目数据清洗与框架设计，使用MySQL数据库清洗数千条电子病历数据，基于临床指南中提取的特征词表对患者主诉文本进行症状和体征提取并结合检验结果计算患病概率。 该项目被评为校级优秀案例并在医学生创新创业大赛中被评为全国优秀项目。
+ 基于领域本体的方面级观点挖掘 2016.9-2018.6 本科毕业论文  为对知乎上移动医疗相关观点进行挖掘与总结，基于TF-IDF对知网中相关文献题录进行关键词提取并层次聚类构建领域本体概念体系，自编Python爬虫爬取了知乎移动医疗话题下数千条回答数据，并将其中挖掘出的观点方面与本体概念做匹配，最后基于概念体系实现自下而上的观点总结。
+ 基于Google Earth的全球疫情故事可视化 2020.2-2020.6  基于Google Earth对全球数十个典型的疫情主题故事及其背景信息进行三维地理可视化，尽可能生动地描述与疫情斗争的真实案例，真实客观地再现疫情中的人民生活、反映疫情中的个体命运与人类命运的关系。
+研究方向   研究方向：数据分析
+  相关技能：Python、 Excel、 MySQL、 SPSS等
+  兴趣爱好  传统艺术：相声、京剧等  </description>
+    </item>
+    
+  </channel>
+</rss>
