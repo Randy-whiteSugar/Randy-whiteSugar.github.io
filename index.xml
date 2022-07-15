@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>About</title>
+      <title>关于我</title>
       <link>https://Randy-whiteSugar.github.io/about/</link>
       <pubDate>Sat, 16 Jul 2022 00:56:50 +0800</pubDate>
       
@@ -23,11 +23,11 @@
     </item>
     
     <item>
-      <title>MyResume</title>
-      <link>https://Randy-whiteSugar.github.io/post/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
+      <title>关于我</title>
+      <link>https://Randy-whiteSugar.github.io/post/self_introduction/</link>
       <pubDate>Fri, 15 Jul 2022 20:12:35 +0800</pubDate>
       
-      <guid>https://Randy-whiteSugar.github.io/post/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
+      <guid>https://Randy-whiteSugar.github.io/post/self_introduction/</guid>
       
         <description>&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;
 </description>
