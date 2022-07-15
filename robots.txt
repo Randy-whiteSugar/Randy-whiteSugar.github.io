@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://randy-whitesugar.github.io/sitemap.xml
+Sitemap: Randy-whiteSugar.github.io/sitemap.xml
