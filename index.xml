@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Randy的打工笔记</title>
+    <title>切糕的打工笔记</title>
     <link>https://Randy-whiteSugar.github.io/</link>
-    <description>Recent content on Randy的打工笔记</description>
+    <description>Recent content on 切糕的打工笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 15 Jul 2022 20:12:35 +0800</lastBuildDate>
@@ -24,10 +24,10 @@
     
     <item>
       <title>MyResume</title>
-      <link>https://Randy-whiteSugar.github.io/post/myresume/</link>
+      <link>https://Randy-whiteSugar.github.io/post/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
       <pubDate>Fri, 15 Jul 2022 20:12:35 +0800</pubDate>
       
-      <guid>https://Randy-whiteSugar.github.io/post/myresume/</guid>
+      <guid>https://Randy-whiteSugar.github.io/post/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
       
         <description>&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;
 </description>
