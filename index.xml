@@ -6,10 +6,79 @@
     <description>Recent content on 切糕的打工笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jul 2022 20:12:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jul 2022 00:11:03 +0800</lastBuildDate>
     
         <atom:link href="https://randy-whitesugar.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sql_q1</title>
+      <link>https://randy-whitesugar.github.io/post/sql_q1/</link>
+      <pubDate>Tue, 19 Jul 2022 00:11:03 +0800</pubDate>
+      
+      <guid>https://randy-whitesugar.github.io/post/sql_q1/</guid>
+      
+        <description>&lt;h3 id=&#34;sql连续登录问题从笨方法开始理顺思路&#34;&gt;SQL连续登录问题：从笨方法开始理顺思路&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前言：SQL连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，但是我还是想从一个笨方法讲起，把思路理顺，再拓展一下，给大家一点点启发。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;一题目&#34;&gt;一、题目&lt;/h4&gt;
+&lt;p&gt;1、题目常见形式：&lt;br&gt;
+ 1）查询连续登录7天的用户&lt;br&gt;
+ 2）查询连续登录7天以上的用户&lt;br&gt;
+2、数据样例（表名login）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;userid&lt;/th&gt;
+&lt;th&gt;login_time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-02 11:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-03 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-03 13:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-04 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-06 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0002&lt;/td&gt;
+&lt;td&gt;2021-05-06 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0002&lt;/td&gt;
+&lt;td&gt;2021-05-08 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;二思路梳理&#34;&gt;二、思路梳理&lt;/h4&gt;
+&lt;p&gt;1、首先，比较明确的是，登录时间信息要简化下，每个人每天登录只保留一条记录就好。&lt;br&gt;
+代码如下：&lt;br&gt;
+select&lt;br&gt;
+ userid&lt;br&gt;
+ , split(login_time, &amp;rsquo; &amp;lsquo;)[0] as login_date&lt;br&gt;
+from login&lt;br&gt;
+group by&lt;br&gt;
+ userid&lt;br&gt;
+ , split(login_time, &amp;rsquo; &amp;lsquo;)[0]&lt;br&gt;
+2、如何从语法角度定义连续？我们知道&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>关于我</title>
@@ -29,7 +98,12 @@
       
       <guid>https://randy-whitesugar.github.io/post/self_introduction/</guid>
       
-        <description>&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;
+        <description>&lt;h4 id=&#34;关于我&#34;&gt;关于我&lt;/h4&gt;
+&lt;p&gt;大家好，我是切糕(*￣︶￣)，目前是网易的一名数据分析师，在职一年。&lt;br&gt;
+时间过得真快，转眼就工作一周年啦，突然想开个博客，目的有两个：&lt;br&gt;
+一来，工作中用的最多的就是SQL，又是一年秋招季，想和大家在SQL方面做一些分享和探讨，共同学习进步；&lt;br&gt;
+二来，无论是工作还是生活，有个地方逼着自己写点东西，思考也好，感悟也罢，能够证明自己没有虚度光阴。&lt;br&gt;
+总之，我乐于探讨有趣的技术问题，也喜欢相声、小品、京剧、话剧等舞台艺术，一直在努力做一个灵魂有趣的新生代农民工啦！&lt;/p&gt;
 </description>
       
     </item>

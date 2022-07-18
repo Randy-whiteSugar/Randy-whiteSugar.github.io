@@ -6,14 +6,23 @@
     <description>Recent content in Posts on 切糕的打工笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jul 2022 20:12:35 +0800</lastBuildDate><atom:link href="https://randy-whitesugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jul 2022 00:11:03 +0800</lastBuildDate><atom:link href="https://randy-whitesugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sql_q1</title>
+      <link>https://randy-whitesugar.github.io/post/sql_q1/</link>
+      <pubDate>Tue, 19 Jul 2022 00:11:03 +0800</pubDate>
+      
+      <guid>https://randy-whitesugar.github.io/post/sql_q1/</guid>
+      <description>SQL连续登录问题：从笨方法开始理顺思路 前言：SQL连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，但是我还是想从一个笨方</description>
+    </item>
+    
     <item>
       <title>关于我</title>
       <link>https://randy-whitesugar.github.io/post/self_introduction/</link>
       <pubDate>Fri, 15 Jul 2022 20:12:35 +0800</pubDate>
       
       <guid>https://randy-whitesugar.github.io/post/self_introduction/</guid>
-      <description>Hello</description>
+      <description>关于我 大家好，我是切糕(*￣︶￣)，目前是网易的一名数据分析师，在职一年。 时间过得真快，转眼就工作一周年啦，突然想开个博客，目的有两个： 一来</description>
     </item>
     
   </channel>
