@@ -1,42 +1,42 @@
-<?xml-stylesheet type="text/xsl" href="https://Randy-whiteSugar.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://randy-whitesugar.github.io/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/about/</loc>
-    <lastmod>2022-07-16T00:56:50+08:00</lastmod>
+    <loc>https://randy-whitesugar.github.io/about/</loc>
+    <lastmod>2022-07-18T23:46:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/post/</loc>
-    <lastmod>2022-07-15T20:12:35+08:00</lastmod>
+    <loc>https://randy-whitesugar.github.io/post/</loc>
+    <lastmod>2022-07-18T23:46:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/post/self_introduction/</loc>
-    <lastmod>2022-07-15T20:12:35+08:00</lastmod>
+    <loc>https://randy-whitesugar.github.io/post/self_introduction/</loc>
+    <lastmod>2022-07-18T23:46:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/</loc>
-    <lastmod>2022-07-15T20:12:35+08:00</lastmod>
+    <loc>https://randy-whitesugar.github.io/</loc>
+    <lastmod>2022-07-18T23:46:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/categories/</loc>
+    <loc>https://randy-whitesugar.github.io/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://Randy-whiteSugar.github.io/tags/</loc>
+    <loc>https://randy-whitesugar.github.io/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

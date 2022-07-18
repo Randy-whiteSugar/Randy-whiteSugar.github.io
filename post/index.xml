@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 切糕的打工笔记</title>
-    <link>https://Randy-whiteSugar.github.io/post/</link>
+    <link>https://randy-whitesugar.github.io/post/</link>
     <description>Recent content in Posts on 切糕的打工笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Jul 2022 20:12:35 +0800</lastBuildDate><atom:link href="https://Randy-whiteSugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Jul 2022 20:12:35 +0800</lastBuildDate><atom:link href="https://randy-whitesugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于我</title>
-      <link>https://Randy-whiteSugar.github.io/post/self_introduction/</link>
+      <link>https://randy-whitesugar.github.io/post/self_introduction/</link>
       <pubDate>Fri, 15 Jul 2022 20:12:35 +0800</pubDate>
       
-      <guid>https://Randy-whiteSugar.github.io/post/self_introduction/</guid>
+      <guid>https://randy-whitesugar.github.io/post/self_introduction/</guid>
       <description>Hello</description>
     </item>
     
