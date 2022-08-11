@@ -8,12 +8,12 @@
     <language>zh-cn</language>
     <lastBuildDate>Tue, 19 Jul 2022 00:11:03 +0800</lastBuildDate><atom:link href="https://randy-whitesugar.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Sql_q1</title>
+      <title>SQL处理连续性问题：从经典面试题开始拓展思路</title>
       <link>https://randy-whitesugar.github.io/post/sql_q1/</link>
       <pubDate>Tue, 19 Jul 2022 00:11:03 +0800</pubDate>
       
       <guid>https://randy-whitesugar.github.io/post/sql_q1/</guid>
-      <description>SQL连续登录问题：从笨方法开始理顺思路 前言：SQL连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，但是我还是想从一个笨方</description>
+      <description>前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题</description>
     </item>
     
     <item>

@@ -12,15 +12,14 @@
     
     
     <item>
-      <title>Sql_q1</title>
+      <title>SQL处理连续性问题：从经典面试题开始拓展思路</title>
       <link>https://randy-whitesugar.github.io/post/sql_q1/</link>
       <pubDate>Tue, 19 Jul 2022 00:11:03 +0800</pubDate>
       
       <guid>https://randy-whitesugar.github.io/post/sql_q1/</guid>
       
-        <description>&lt;h3 id=&#34;sql连续登录问题从笨方法开始理顺思路&#34;&gt;SQL连续登录问题：从笨方法开始理顺思路&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;前言：SQL连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，但是我还是想从一个笨方法讲起，把思路理顺，再拓展一下，给大家一点点启发。&lt;/p&gt;
+        <description>&lt;blockquote&gt;
+&lt;p&gt;前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;一题目&#34;&gt;一、题目&lt;/h4&gt;
 &lt;p&gt;1、题目常见形式：&lt;br&gt;
@@ -66,16 +65,225 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;二思路梳理&#34;&gt;二、思路梳理&lt;/h4&gt;
-&lt;p&gt;1、首先，比较明确的是，登录时间信息要简化下，每个人每天登录只保留一条记录就好。&lt;br&gt;
-代码如下：&lt;br&gt;
-select&lt;br&gt;
- userid&lt;br&gt;
- , split(login_time, &amp;rsquo; &amp;lsquo;)[0] as login_date&lt;br&gt;
-from login&lt;br&gt;
-group by&lt;br&gt;
- userid&lt;br&gt;
- , split(login_time, &amp;rsquo; &amp;lsquo;)[0]&lt;br&gt;
-2、如何从语法角度定义连续？我们知道&lt;/p&gt;
+&lt;h5 id=&#34;1数据预处理&#34;&gt;1、数据预处理&lt;/h5&gt;
+&lt;p&gt; 首先，比较明确的是，登录时间信息要简化下，每个人每天登录只保留一条记录就好。&lt;br&gt;
+=&amp;gt; 代码如下：&lt;br&gt;
+&lt;em&gt;注：以下sql代码采用hive sql语法，是工作常用的，面试也会认可&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;select   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    userid  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    , split(login_time, &amp;#39; &amp;#39;)[0] as login_date  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from login  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;group by  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    userid  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    , split(login_time, &amp;#39; &amp;#39;)[0]  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;结果表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;userid&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;login_date&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-04&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-06&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0002&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-06&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0002&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;2如何从语法角度定义连续&#34;&gt;2、如何从语法角度定义连续？&lt;/h5&gt;
+&lt;p&gt;我们知道sql的语法通常是把每一条记录独立看待的，如果想表示不同记录之间的关系，通常有两种办法：&lt;br&gt;
+ 1）窗口函数（好用但是有局限）&lt;br&gt;
+ 2）自连接（更万能但是更麻烦）&lt;br&gt;
+=&amp;gt; 我们先用窗口函数法做一下，慢慢拓展开来，尝试把问题通用化：&lt;/p&gt;
+&lt;h5 id=&#34;21-窗口函数法网上流传的标准做法需要聪明的小脑袋瓜灵光乍现一下&#34;&gt;2.1 窗口函数法（网上流传的标准做法，需要聪明的小脑袋瓜灵光乍现一下）&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;显然：
+对于某一个用户登录产生的一个连续日期序列，日期 - 序列号 * 天数 = 常数（其等于序列开始的前一天）&lt;/strong&gt;&lt;br&gt;
+Q：这时候有小伙伴要举手了，不就是等差数列嘛，有那么多性质，为啥非找这么一个性质呢？&lt;br&gt;
+A：简单来说两个原因：&lt;br&gt;
+1）我们需要的是一个序列的共同特征，所谓共同特征最好的体现就是一个共同的特征值&lt;br&gt;
+2）好算呀，序列号可以直接用窗口函数row_number()得出(不熟悉窗口函数的同学可以去翻翻教程哈)&lt;/p&gt;
+&lt;h5 id=&#34;211-此题标准答案&#34;&gt;2.1.1 此题标准答案&lt;/h5&gt;
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;select 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    userid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    , login_date
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    , date_sub(login_date, rn) as sequence_feature 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    select 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        userid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        , login_date
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        , row_number() over(partition by userid order by login_date) as rn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    from tmp_user_login_distinct_days
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;) as a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;结果表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;userid&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;login_date&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;sequence_feature&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-03&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-02&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-04&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-02&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0001&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-06&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0002&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-06&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0002&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-08&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2021-05-07&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;有了这个序列特征值，就想算什么算什么啦，注意分组条件：&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1）连续登陆天数：&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;group by userid, sequence_feature  =&amp;gt; count(distinct login_date)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2）连续登录最后一天：&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;group by userid, sequence_feature  =&amp;gt; max(login_date)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;212-题目拓展v1&#34;&gt;2.1.2 题目拓展v1&lt;/h5&gt;
+&lt;p&gt;现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。&lt;br&gt;
+题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。&lt;br&gt;
+数据样例（表名operation）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;userid&lt;/th&gt;
+&lt;th&gt;op_time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;30213029&lt;/td&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-02 11:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30213029&lt;/td&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-03 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30213029&lt;/td&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-03 13:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;67813098&lt;/td&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-04 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;67813098&lt;/td&gt;
+&lt;td&gt;0001&lt;/td&gt;
+&lt;td&gt;2021-05-06 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;67813098&lt;/td&gt;
+&lt;td&gt;0002&lt;/td&gt;
+&lt;td&gt;2021-05-06 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;67813098&lt;/td&gt;
+&lt;td&gt;0002&lt;/td&gt;
+&lt;td&gt;2021-05-08 12:00:23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;叮叮！给大家思考一下，可以私信我答案，下一篇博文更新我的代码~&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
       
     </item>
