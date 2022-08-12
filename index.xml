@@ -22,10 +22,10 @@
 &lt;p&gt;前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;一题目&#34;&gt;一、题目&lt;/h4&gt;
-&lt;p&gt;1、题目常见形式：&lt;br&gt;
- 1）查询连续登录7天的用户&lt;br&gt;
- 2）查询连续登录7天以上的用户&lt;br&gt;
-2、数据样例（表名login）&lt;/p&gt;
+&lt;h5 id=&#34;1题目常见形式&#34;&gt;1、题目常见形式&lt;/h5&gt;
+&lt;p&gt; 1）查询连续登录7天的用户&lt;br&gt;
+ 2）查询连续登录7天以上的用户&lt;/p&gt;
+&lt;h5 id=&#34;2数据样例表名login&#34;&gt;2、数据样例（表名login）&lt;/h5&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -120,21 +120,21 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;hr&gt;
 &lt;h5 id=&#34;2如何从语法角度定义连续&#34;&gt;2、如何从语法角度定义连续？&lt;/h5&gt;
 &lt;p&gt;我们知道sql的语法通常是把每一条记录独立看待的，如果想表示不同记录之间的关系，通常有两种办法：&lt;br&gt;
  1）窗口函数（好用但是有局限）&lt;br&gt;
  2）自连接（更万能但是更麻烦）&lt;br&gt;
-=&amp;gt; 我们先用窗口函数法做一下，慢慢拓展开来，尝试把问题通用化：&lt;/p&gt;
-&lt;h5 id=&#34;21-窗口函数法网上流传的标准做法需要聪明的小脑袋瓜灵光乍现一下&#34;&gt;2.1 窗口函数法（网上流传的标准做法，需要聪明的小脑袋瓜灵光乍现一下）&lt;/h5&gt;
-&lt;p&gt;&lt;strong&gt;显然：
+=&amp;gt; 我们先用窗口函数法做一下，慢慢拓展开来，尝试把问题通用化&lt;/p&gt;
+&lt;h5 id=&#34;3所谓标准解法&#34;&gt;3、所谓标准解法&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;窗口函数法&lt;/strong&gt;（网上流传的标准做法，需要聪明的小脑袋瓜灵光乍现一下）&lt;br&gt;
+&lt;strong&gt;显然：
 对于某一个用户登录产生的一个连续日期序列，日期 - 序列号 * 天数 = 常数（其等于序列开始的前一天）&lt;/strong&gt;&lt;br&gt;
 Q：这时候有小伙伴要举手了，不就是等差数列嘛，有那么多性质，为啥非找这么一个性质呢？&lt;br&gt;
 A：简单来说两个原因：&lt;br&gt;
 1）我们需要的是一个序列的共同特征，所谓共同特征最好的体现就是一个共同的特征值&lt;br&gt;
-2）好算呀，序列号可以直接用窗口函数row_number()得出(不熟悉窗口函数的同学可以去翻翻教程哈)&lt;/p&gt;
-&lt;h5 id=&#34;211-此题标准答案&#34;&gt;2.1.1 此题标准答案&lt;/h5&gt;
-&lt;p&gt;代码如下：&lt;/p&gt;
+2）好算呀，序列号可以直接用窗口函数row_number()得出(不熟悉窗口函数的同学可以去翻翻教程哈)&lt;br&gt;
+&lt;strong&gt;此题标准答案&lt;/strong&gt;&lt;br&gt;
+代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -209,7 +209,7 @@ A：简单来说两个原因：&lt;br&gt;
 &lt;code&gt;group by userid, sequence_feature  =&amp;gt; count(distinct login_date)&lt;/code&gt;&lt;br&gt;
 2）连续登录最后一天：
 &lt;code&gt;group by userid, sequence_feature  =&amp;gt; max(login_date)&lt;/code&gt;&lt;/p&gt;
-&lt;h5 id=&#34;212-题目拓展v1&#34;&gt;2.1.2 题目拓展v1&lt;/h5&gt;
+&lt;h5 id=&#34;4题目拓展v1&#34;&gt;4、题目拓展v1&lt;/h5&gt;
 &lt;p&gt;现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。&lt;br&gt;
 题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。&lt;br&gt;
 数据样例（表名operation）&lt;/p&gt;

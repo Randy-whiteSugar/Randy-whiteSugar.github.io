@@ -69,7 +69,7 @@
 <meta itemprop="name" content="SQL处理连续性问题：从经典面试题开始拓展思路">
 <meta itemprop="description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"><meta itemprop="datePublished" content="2022-07-19T00:11:03+08:00" />
 <meta itemprop="dateModified" content="2022-07-19T00:11:03+08:00" />
-<meta itemprop="wordCount" content="1053">
+<meta itemprop="wordCount" content="1058">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL处理连续性问题：从经典面试题开始拓展思路"/>
 <meta name="twitter:description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"/>
@@ -299,7 +299,7 @@
           2022-07-19
         </time>
         
-        <span class="more-meta"> 约 1053 字 </span>
+        <span class="more-meta"> 约 1058 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -333,10 +333,10 @@
 <p>前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。</p>
 </blockquote>
 <h4 id="一题目">一、题目</h4>
-<p>1、题目常见形式：<br>
- 1）查询连续登录7天的用户<br>
- 2）查询连续登录7天以上的用户<br>
-2、数据样例（表名login）</p>
+<h5 id="1题目常见形式">1、题目常见形式</h5>
+<p> 1）查询连续登录7天的用户<br>
+ 2）查询连续登录7天以上的用户</p>
+<h5 id="2数据样例表名login">2、数据样例（表名login）</h5>
 <table>
 <thead>
 <tr>
@@ -431,21 +431,21 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h5 id="2如何从语法角度定义连续">2、如何从语法角度定义连续？</h5>
 <p>我们知道sql的语法通常是把每一条记录独立看待的，如果想表示不同记录之间的关系，通常有两种办法：<br>
  1）窗口函数（好用但是有局限）<br>
  2）自连接（更万能但是更麻烦）<br>
-=&gt; 我们先用窗口函数法做一下，慢慢拓展开来，尝试把问题通用化：</p>
-<h5 id="21-窗口函数法网上流传的标准做法需要聪明的小脑袋瓜灵光乍现一下">2.1 窗口函数法（网上流传的标准做法，需要聪明的小脑袋瓜灵光乍现一下）</h5>
-<p><strong>显然：
+=&gt; 我们先用窗口函数法做一下，慢慢拓展开来，尝试把问题通用化</p>
+<h5 id="3所谓标准解法">3、所谓标准解法</h5>
+<p><strong>窗口函数法</strong>（网上流传的标准做法，需要聪明的小脑袋瓜灵光乍现一下）<br>
+<strong>显然：
 对于某一个用户登录产生的一个连续日期序列，日期 - 序列号 * 天数 = 常数（其等于序列开始的前一天）</strong><br>
 Q：这时候有小伙伴要举手了，不就是等差数列嘛，有那么多性质，为啥非找这么一个性质呢？<br>
 A：简单来说两个原因：<br>
 1）我们需要的是一个序列的共同特征，所谓共同特征最好的体现就是一个共同的特征值<br>
-2）好算呀，序列号可以直接用窗口函数row_number()得出(不熟悉窗口函数的同学可以去翻翻教程哈)</p>
-<h5 id="211-此题标准答案">2.1.1 此题标准答案</h5>
-<p>代码如下：</p>
+2）好算呀，序列号可以直接用窗口函数row_number()得出(不熟悉窗口函数的同学可以去翻翻教程哈)<br>
+<strong>此题标准答案</strong><br>
+代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -520,7 +520,7 @@ A：简单来说两个原因：<br>
 <code>group by userid, sequence_feature  =&gt; count(distinct login_date)</code><br>
 2）连续登录最后一天：
 <code>group by userid, sequence_feature  =&gt; max(login_date)</code></p>
-<h5 id="212-题目拓展v1">2.1.2 题目拓展v1</h5>
+<h5 id="4题目拓展v1">4、题目拓展v1</h5>
 <p>现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。<br>
 题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。<br>
 数据样例（表名operation）</p>
