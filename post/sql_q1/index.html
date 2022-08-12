@@ -69,7 +69,7 @@
 <meta itemprop="name" content="SQL处理连续性问题：从经典面试题开始拓展思路">
 <meta itemprop="description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"><meta itemprop="datePublished" content="2022-07-19T00:11:03+08:00" />
 <meta itemprop="dateModified" content="2022-07-19T00:11:03+08:00" />
-<meta itemprop="wordCount" content="1058">
+<meta itemprop="wordCount" content="1061">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL处理连续性问题：从经典面试题开始拓展思路"/>
 <meta name="twitter:description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"/>
@@ -299,7 +299,7 @@
           2022-07-19
         </time>
         
-        <span class="more-meta"> 约 1058 字 </span>
+        <span class="more-meta"> 约 1061 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -521,9 +521,10 @@ A：简单来说两个原因：<br>
 2）连续登录最后一天：
 <code>group by userid, sequence_feature  =&gt; max(login_date)</code></p>
 <h4 id="三题目拓展v1">三、题目拓展v1</h4>
-<p>现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。<br>
-题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。<br>
-数据样例（表名operation）</p>
+<p>现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。</p>
+<h5 id="1题目描述">1、题目描述</h5>
+<p> 数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。</p>
+<h5 id="2数据样例表名operation">2、数据样例（表名operation）</h5>
 <table>
 <thead>
 <tr>
