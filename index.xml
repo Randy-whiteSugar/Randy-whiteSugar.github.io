@@ -209,7 +209,7 @@ A：简单来说两个原因：&lt;br&gt;
 &lt;code&gt;group by userid, sequence_feature  =&amp;gt; count(distinct login_date)&lt;/code&gt;&lt;br&gt;
 2）连续登录最后一天：
 &lt;code&gt;group by userid, sequence_feature  =&amp;gt; max(login_date)&lt;/code&gt;&lt;/p&gt;
-&lt;h5 id=&#34;4题目拓展v1&#34;&gt;4、题目拓展v1&lt;/h5&gt;
+&lt;h4 id=&#34;三题目拓展v1&#34;&gt;三、题目拓展v1&lt;/h4&gt;
 &lt;p&gt;现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。&lt;br&gt;
 题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。&lt;br&gt;
 数据样例（表名operation）&lt;/p&gt;

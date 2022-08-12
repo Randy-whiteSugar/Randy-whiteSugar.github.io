@@ -520,7 +520,7 @@ A：简单来说两个原因：<br>
 <code>group by userid, sequence_feature  =&gt; count(distinct login_date)</code><br>
 2）连续登录最后一天：
 <code>group by userid, sequence_feature  =&gt; max(login_date)</code></p>
-<h5 id="4题目拓展v1">4、题目拓展v1</h5>
+<h4 id="三题目拓展v1">三、题目拓展v1</h4>
 <p>现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。<br>
 题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。<br>
 数据样例（表名operation）</p>
