@@ -69,7 +69,7 @@
 <meta itemprop="name" content="SQL处理连续性问题：从经典面试题开始拓展思路">
 <meta itemprop="description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"><meta itemprop="datePublished" content="2022-07-19T00:11:03+08:00" />
 <meta itemprop="dateModified" content="2022-07-19T00:11:03+08:00" />
-<meta itemprop="wordCount" content="1054">
+<meta itemprop="wordCount" content="1053">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL处理连续性问题：从经典面试题开始拓展思路"/>
 <meta name="twitter:description" content="前言：连续登录问题是一个经典的SQL面试题，相信有些同学已经背下答案了，我们先把套路过一下，再拓展开来，希望给大家一点点启发。 一、题目 1、题"/>
@@ -299,7 +299,7 @@
           2022-07-19
         </time>
         
-        <span class="more-meta"> 约 1054 字 </span>
+        <span class="more-meta"> 约 1053 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -340,45 +340,45 @@
 <table>
 <thead>
 <tr>
-<th>userid</th>
-<th>login_time</th>
+<th style="text-align:center">userid</th>
+<th style="text-align:center">login_time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0001</td>
-<td>2021-05-02 11:00:23</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-02 11:00:23</td>
 </tr>
 <tr>
-<td>0001</td>
-<td>2021-05-03 12:00:23</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-03 12:00:23</td>
 </tr>
 <tr>
-<td>0001</td>
-<td>2021-05-03 13:00:23</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-03 13:00:23</td>
 </tr>
 <tr>
-<td>0001</td>
-<td>2021-05-04 12:00:23</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-04 12:00:23</td>
 </tr>
 <tr>
-<td>0001</td>
-<td>2021-05-06 12:00:23</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-06 12:00:23</td>
 </tr>
 <tr>
-<td>0002</td>
-<td>2021-05-06 12:00:23</td>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">2021-05-06 12:00:23</td>
 </tr>
 <tr>
-<td>0002</td>
-<td>2021-05-08 12:00:23</td>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">2021-05-08 12:00:23</td>
 </tr>
 </tbody>
 </table>
 <h4 id="二思路梳理">二、思路梳理</h4>
 <h5 id="1数据预处理">1、数据预处理</h5>
 <p> 首先，比较明确的是，登录时间信息要简化下，每个人每天登录只保留一条记录就好。<br>
-=&gt; 代码如下：<br>
+代码如下：<br>
 <em>注：以下sql代码采用hive sql语法，是工作常用的，面试也会认可</em></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -513,33 +513,13 @@ A：简单来说两个原因：<br>
 <td style="text-align:center">2021-05-08</td>
 <td style="text-align:center">2021-05-07</td>
 </tr>
-<tr>
-<td style="text-align:center">有了这个序列特征值，就想算什么算什么啦，注意分组条件：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">1）连续登陆天数：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>group by userid, sequence_feature  =&gt; count(distinct login_date)</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">2）连续登录最后一天：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>group by userid, sequence_feature  =&gt; max(login_date)</code></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<p>有了这个序列特征值，就想算什么算什么啦，注意分组条件：<br>
+1）连续登陆天数：
+<code>group by userid, sequence_feature  =&gt; count(distinct login_date)</code><br>
+2）连续登录最后一天：
+<code>group by userid, sequence_feature  =&gt; max(login_date)</code></p>
 <h5 id="212-题目拓展v1">2.1.2 题目拓展v1</h5>
 <p>现在我们面对的需求发生了一点变化，不是连续登录日期问题啦，而是连续操作问题。<br>
 题目描述：数据源是一个工单操作日志，id是工单号，userid是操作工号，op_time是操作时间。已知同一个工单可以由多个人流转操作（即A操作几次后可以转给B，B操作几次后可以转给C，以此类推）。我们把同一个人对同一个工单的连续操作视为一个操作周期（或称一个工作量），希望取出所有工单的所有操作周期的最后一次操作时间（即操作周期结束时间）。<br>
@@ -547,54 +527,50 @@ A：简单来说两个原因：<br>
 <table>
 <thead>
 <tr>
-<th>id</th>
-<th>userid</th>
-<th>op_time</th>
+<th style="text-align:center">id</th>
+<th style="text-align:center">userid</th>
+<th style="text-align:center">op_time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>30213029</td>
-<td>0001</td>
-<td>2021-05-02 11:00:23</td>
+<td style="text-align:center">30213029</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-02 11:00:23</td>
 </tr>
 <tr>
-<td>30213029</td>
-<td>0001</td>
-<td>2021-05-03 12:00:23</td>
+<td style="text-align:center">30213029</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-03 12:00:23</td>
 </tr>
 <tr>
-<td>30213029</td>
-<td>0001</td>
-<td>2021-05-03 13:00:23</td>
+<td style="text-align:center">30213029</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-03 13:00:23</td>
 </tr>
 <tr>
-<td>67813098</td>
-<td>0001</td>
-<td>2021-05-04 12:00:23</td>
+<td style="text-align:center">67813098</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-04 12:00:23</td>
 </tr>
 <tr>
-<td>67813098</td>
-<td>0001</td>
-<td>2021-05-06 12:00:23</td>
+<td style="text-align:center">67813098</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">2021-05-06 12:00:23</td>
 </tr>
 <tr>
-<td>67813098</td>
-<td>0002</td>
-<td>2021-05-06 12:00:23</td>
+<td style="text-align:center">67813098</td>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">2021-05-06 12:00:23</td>
 </tr>
 <tr>
-<td>67813098</td>
-<td>0002</td>
-<td>2021-05-08 12:00:23</td>
-</tr>
-<tr>
-<td>叮叮！给大家思考一下，可以私信我答案，下一篇博文更新我的代码~</td>
-<td></td>
-<td></td>
+<td style="text-align:center">67813098</td>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">2021-05-08 12:00:23</td>
 </tr>
 </tbody>
 </table>
+<p>叮叮！给大家思考一下，可以私信我答案，下一篇博文更新我的代码~</p>
 
     </div>
 
